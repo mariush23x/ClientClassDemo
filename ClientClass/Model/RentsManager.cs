@@ -52,7 +52,7 @@ namespace ClientClass.Model {
 
         public decimal CheckClientRentBallance(Client client) {
             var sum = 0.0m;
-            foreach (var rent in _currentRents.Where(r => r.Client == client)) {
+            foreach (var rent in _currentRents.Where(r => r.Client == client && !r.IsRented)) {
                 sum += rent.Value;
             }
             return sum;
